@@ -1,26 +1,35 @@
 import DataController from "./DataController.js";
+import UIController from "./UIController.js";
 
-const searchInput = document.querySelector("#searchInput")
-const searchBtn = document.querySelector("#searchButton")
-const profileContainer = document.querySelector("#profile-container")
+const searchInput = document.querySelector("#searchInput");
+const searchBtn = document.querySelector("#searchButton");
+const profileContainer = document.querySelector("#profile-container");
+const errorElement = document.querySelector(".error-container");
 
-const dataController = new DataController()
+const dataController = new DataController();
+const interfaceController = new UIController(profileContainer, errorElement);
 
-searchBtn.addEventListener("click", async () => {
-    if(searchInput.value!=='') {
+const userProfileFromStorage = dataController.userProfile;
+if (userProfileFromStorage)
+  interfaceController.renderProfile(userProfileFromStorage);
 
-        const username = searchInput.value;
-    
-        try {
-            const res = await dataController.fetchProfile(username)
-            if(res)
-                console.log(res)
-        
-        }catch(err) {
-            console.log(err.message)
-        } finally {
-            searchInput.value = "";
-        }
+const searchProfile = async () => {
+  if (searchInput.value !== "") {
+    interfaceController.hideError();
+    const username = searchInput.value;
+
+    try {
+      const profile = await dataController.fetchProfile(username);
+      if (profile) interfaceController.renderProfile(profile);
+    } catch (err) {
+      interfaceController.showError(err.message);
+    } finally {
+      searchInput.value = "";
     }
+  }
+};
 
-})
+searchBtn.addEventListener("click", searchProfile);
+document.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") searchProfile();
+});

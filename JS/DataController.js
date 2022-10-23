@@ -7,8 +7,8 @@ class DataController {
     async fetchProfile(username) {
             const response = await fetch(this.baseURL+username)
             if(response.ok) {
-                const profile = response.json()
-                localStorage.setItem("userProfile", profile )
+                const profile = await response.json()
+                localStorage.setItem("userProfile", JSON.stringify(profile) )
                 return profile
             }
         

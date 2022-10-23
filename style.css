@@ -133,6 +133,12 @@ a {
   width: 100%;
 }
 
+.main-data,
+.bio,
+.details-container {
+  color: #333333;
+}
+
 .profile-card {
   border-radius: 12px;
   width: min(920px, 90%);
@@ -178,7 +184,6 @@ a {
 .main-data .username {
   font-weight: 500;
   font-size: 2rem;
-  color: #333333;
 }
 
 .bio-container {
