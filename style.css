@@ -43,10 +43,6 @@ a {
   transition: background-color 0.25s ease-in-out;
 }
 
-.btn svg {
-  display: none;
-}
-
 .btn:hover {
   background-color: #0a5dda;
 }
@@ -108,6 +104,10 @@ a {
   width: 30%;
 }
 
+#searchButton svg {
+  display: none;
+}
+
 .error-container {
   margin-top: 0.5rem;
   display: flex;
@@ -153,7 +153,6 @@ a {
 }
 
 .avatar-container {
-  width: 25%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -210,7 +209,7 @@ a {
 
 .profile-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
   gap: 0.5rem;
 }
 
@@ -219,4 +218,65 @@ a {
   padding: 0.5rem 0.75rem;
   text-align: center;
   color: #fff;
+}
+
+@media screen and (max-width: 992px) {
+  .avatar-container img {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search-bar {
+    padding: 1rem 1rem 1rem;
+    width: min(480px, 90%);
+  }
+
+  .profile-card {
+    flex-direction: column;
+    width: min(480px, 90%);
+  }
+
+  .avatar-container {
+    flex-direction: row;
+  }
+
+  .main-data {
+    flex-direction: column;
+    row-gap: 0.25rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #searchButton {
+    padding: 1rem;
+    width: fit-content;
+  }
+
+  #searchButton svg {
+    display: block;
+  }
+
+  #searchButton span {
+    display: none;
+  }
+
+  .avatar-container,
+  .data-container {
+    padding: 1rem;
+  }
+
+  .avatar-container {
+    gap: 1rem;
+  }
+
+  .avatar-container img {
+    width: 100px;
+  }
+
+  .details-container {
+    align-self: center;
+    width: 100%;
+    column-gap: 1rem;
+  }
 }

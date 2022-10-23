@@ -103,7 +103,7 @@ class UIController {
                 <p class="detail-text">${
                   profileData.blog === ""
                     ? "Not Provided"
-                    : '<a href="' +
+                    : '<a href="http://' +
                       profileData.blog +
                       '" target="_blank">' +
                       profileData.blog +
