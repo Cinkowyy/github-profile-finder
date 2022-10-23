@@ -129,11 +129,16 @@ a {
 
 /* Profile */
 
+#profile-container {
+  width: 100%;
+}
+
 .profile-card {
   border-radius: 12px;
   width: min(920px, 90%);
   display: flex;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .avatar-container,
