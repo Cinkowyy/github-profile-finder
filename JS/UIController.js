@@ -36,7 +36,7 @@ class UIController {
             <div class="main-data">
                 <p class="username">${profileData.login}</p>
                 <p class="joined-date">
-                Joinded <span class="bold">${formattedDate}</span>
+                Joined <span class="bold">${formattedDate}</span>
                 </p>
             </div>
             <div class="bio-container">
